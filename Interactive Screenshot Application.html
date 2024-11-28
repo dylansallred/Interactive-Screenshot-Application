@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Interactive Screenshot Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <style>
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="modeIndicator" class="mode-indicator hidden">
+            <i class="fas"></i>
+            <span></span>
+        </div>
+        <div id="sideToolbarWrapper" class="hidden">
+            <div id="sideToolbar">
+                <div id="sideToolbarHeader">
+                    <h3>Screenshots</h3>
+                    <div class="toolbar-controls">
+                        <div class="toolbar-buttons">
+                            <label for="uploadScreenshot" class="toolbar-btn upload-btn" title="Upload Images">
+                                <i class="fas fa-upload"></i>
+                            </label>
+                            <button id="deleteAllScreenshots" class="toolbar-btn delete-all-btn" title="Delete All Images">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        <input type="file" id="uploadScreenshot" accept="image/*" multiple>
+                    </div>
+                    <div class="toolbar-slider" title="Adjust Thumbnail Image Size">
+                        <i class="fas fa-images fa-sm"></i>
+                        <input type="range" id="imageSizeSlider" min="1" max="4" value="2">
+                        <i class="fas fa-image fa-lg"></i>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" id="imageSearch" placeholder="Search images...">
+                    </div>
+                    <div class="tag-filter">
+                        <select id="tagFilter">
+                            <option value="">All Tags</option>
+                            <!-- Dynamically add tags here -->
+                        </select>
+                    </div>
+                </div>
+                <div id="imageList"></div>
+            </div>
+        </div>
+        <div id="sideToolbarToggle" style="left: 0px;"" title="Open/Close Sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div id="imageContainer">
+            <!-- Add this new div for the placeholder message -->
+            <div id="placeholderMessage" class="placeholder-message">
+                <div class="placeholder-content">
+                    <i class="fas fa-image fa-10x"></i>
+                    <h2>No Images Added</h2>
+                    <p>Upload screenshots to get started</p>
+                    <p>Click the <i class="fas fa-upload"></i> button in the sidebar</p>
+                </div>
+            </div>
+        </div>
+        <div id="toolbarIcon" title="Tools">
+            <i class="fas fa-wrench"></i>
+        </div>
+        <div id="helpIcon" title="Help & Information">
+            <i class="fas fa-question-circle"></i>
+        </div>
+        <div id="toolbar" class="hidden">
+            <button id="drawBox"><i class="fas fa-draw-polygon" title="Draw Box"></i></button>
+            <button id="saveProject"><i class="fas fa-save" title="Save Project"></i></button>
+            <button id="openProject"><i class="fas fa-folder-open" title="Upload Project"></i></button>
+            <button id="settingsBtn"><i class="fas fa-cog" title="Settings"></i></button>
+        </div>
+        <div id="helpModal" class="modal hidden">
+            <div class="modal-content" onclick="event.stopPropagation();">
+                <h2>Help & Information</h2>
+                <div id="helpContent"></div>
+            </div>
+        </div>
+        
+        <div id="settingsModal" class="modal hidden">
+            <div class="modal-content" onclick="event.stopPropagation();">
+                <h2>Settings</h2>
+                <div class="setting-item">
+                    <label for="drawBoxShortcut">Draw Box Shortcut:</label>
+                    <input type="text" id="drawBoxShortcut" placeholder="Press keys..." style="width: auto;">
+                </div>
+                <div class="setting-item">
+                    <label for="linkedBoxColor">Linked Box Color:</label>
+                    <input type="color" id="linkedBoxColor" value="#3498db">
+                </div>
+                <div class="setting-item">
+                    <label for="globalBoxColor">Global Box Color:</label>
+                    <input type="color" id="globalBoxColor" value="#9b59b6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contextMenu" class="hidden">
+        <ul></ul>
+    </div>
+    <script>
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
